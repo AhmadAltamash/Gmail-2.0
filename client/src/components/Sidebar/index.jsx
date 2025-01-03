@@ -7,27 +7,27 @@ import { BiSend } from "react-icons/bi";
 
 const sidebarItems = [
     {
-        icon: <MdInbox size={'20px'}/>,
+        icon: <MdInbox size={'18px'}/>,
         text: "Inbox"
     },
     {
-        icon: <IoMdStarOutline size={'20px'}/>,
+        icon: <IoMdStarOutline size={'18px'}/>,
         text: "Starred"
     },
     {
-        icon: <LuClock4 size={'20px'}/>,
+        icon: <LuClock4 size={'18px'}/>,
         text: "Snoozed"
     },
     {
-        icon: <BiSend size={'20px'}/>,
+        icon: <BiSend size={'18px'}/>,
         text: "Sent"
     },
     {
-        icon: <MdOutlineDrafts size={'20px'}/>,
+        icon: <MdOutlineDrafts size={'18px'}/>,
         text: "Drafts"
     },
     {
-        icon: <MdKeyboardArrowDown size={'20px'}/>,
+        icon: <MdKeyboardArrowDown size={'18px'}/>,
         text: "More"
     },
 ]
