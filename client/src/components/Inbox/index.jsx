@@ -57,7 +57,7 @@ const Inbox = () => {
             <div className='flex items-center gap-1 py-2 text-gray-600'>
                 {toggleItems.map((item, index) => {
                     return (
-                        <button key={index} className={`px-5 py-3 hover:bg-gray-200 rounded-sm flex gap-5 items-center outline-none focus:border-b-4 focus:border-blue-700 focus:text-blue-700 md:w-[18%] w-max`}>
+                        <button onClick={() => setSelected(index)}  className={`px-5 py-3 hover:bg-gray-200 rounded-sm flex gap-5 items-center outline-none ${selected === index ? "focus:border-b-4 focus:border-blue-700 focus:text-blue-700" : "focus:border-b-4 focus:border-transparent focus:text-gray-400"} md:w-[18%] w-max transition-all duration-200`}>
                             {item.icon}
                             <span>{item.text}</span>
                         </button>
