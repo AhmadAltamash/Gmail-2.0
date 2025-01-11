@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { MdCropDin, MdInbox, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdOutlinePersonOutline } from "react-icons/md";
 import { FaCaretDown } from "react-icons/fa";
 import { IoMdRefresh } from "react-icons/io";
@@ -22,6 +22,9 @@ const toggleItems = [
 
 
 const Inbox = () => {
+
+    const [selected, setSelected] = useState(0);
+
   return (
     <div className='flex-1 bg-white rounded-xl mx-5'>
         <div className='px-4 py-2 flex items-center justify-between'>
