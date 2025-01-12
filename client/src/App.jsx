@@ -1,6 +1,6 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Body, Emails, Inbox, Mail, Navbar, Sidebar } from './components'
+import { Body, Compose, Emails, Inbox, Mail, Navbar, Sidebar } from './components'
 
 const router = createBrowserRouter([
   {
@@ -24,6 +24,9 @@ const App = () => {
     <div className='bg-[#F6F8FC] h-screen'>
       <Navbar/>
       <RouterProvider router={router}/>
+      <div className='absolute w-[38%] bottom-0 right-20 z-10'>
+        <Compose/>
+      </div>
     </div>
   )
 }

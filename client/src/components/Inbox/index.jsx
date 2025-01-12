@@ -48,7 +48,7 @@ const Inbox = () => {
             </div>
 
             <div className='flex items-center gap-3 text-gray-600'>
-                <span>1 to 50</span>
+                <span className='text-sm'>1 to 50</span>
                 <MdKeyboardArrowLeft size={'18px'}/>
                 <MdKeyboardArrowRight size={'18px'}/>
             </div>

@@ -45,10 +45,10 @@ const Sidebar = () => {
             {
                 sidebarItems.map((item, index) => {
                     return (
-                        <div className='flex items-center pl-6 py-1 rounded-r-full gap-4 my-2 hover:bg-gray-200 cursor-pointer ease-in-out duration-200' key={index}>
+                        <button className='flex items-center pl-6 pr-8 py-1 rounded-r-full gap-4 my-2 hover:bg-gray-200 cursor-pointer ease-in-out duration-200' key={index}>
                             {item.icon}
                             <p>{item.text}</p>
-                        </div>
+                        </button>
                     )
                 })
             }
