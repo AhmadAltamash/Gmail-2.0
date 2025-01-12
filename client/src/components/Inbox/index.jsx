@@ -4,6 +4,7 @@ import { FaCaretDown } from "react-icons/fa";
 import { IoMdRefresh } from "react-icons/io";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { GoTag } from "react-icons/go";
+import Emails from '../Emails';
 
 const toggleItems = [
     {
@@ -64,8 +65,8 @@ const Inbox = () => {
                     )
                 })}
             </div>
+            <Emails/>
         </div>
-
     </div>
   )
 }
