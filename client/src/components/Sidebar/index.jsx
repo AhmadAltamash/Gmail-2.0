@@ -4,6 +4,8 @@ import { MdInbox, MdOutlineDrafts, MdKeyboardArrowDown } from "react-icons/md";
 import { IoMdStarOutline } from "react-icons/io";
 import { LuClock4 } from "react-icons/lu";
 import { BiSend } from "react-icons/bi";
+import { useDispatch } from 'react-redux';
+import { setOpen } from '../../redux/appSlice';
 
 const sidebarItems = [
     {
@@ -33,10 +35,13 @@ const sidebarItems = [
 ]
 
 const Sidebar = () => {
+
+    const dispatch = useDispatch();
+
   return (
     <div className='w-[15%]'>
         <div className='p-3'> 
-            <button className='flex items-center gap-2 bg-[#C2E7FF] rounded-xl p-4 font-[450] hover:shadow-md transition-all duration-200'>
+            <button onClick={() => dispatch(setOpen(true))} className='flex items-center gap-2 bg-[#C2E7FF] rounded-xl p-4 font-[450] hover:shadow-md transition-all duration-200'>
                 <RiPencilLine className='font-semibold text-2xl'/>
                 Compose
             </button>
