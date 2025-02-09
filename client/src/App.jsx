@@ -1,6 +1,6 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Body, Compose, Emails, Inbox, Mail, Navbar, Sidebar } from './components'
+import { Body, Compose, Emails, Inbox, Login, Mail, Navbar, Sidebar, Signup } from './components'
 
 const router = createBrowserRouter([
   {
@@ -16,7 +16,15 @@ const router = createBrowserRouter([
         element: <Mail />,
       },
     ]
-  }
+  },
+  {
+    path: '/login',
+    element: <Login />,
+  },
+  {
+    path: '/signup',
+    element: <Signup />,
+  },
 ])
 
 const App = () => {

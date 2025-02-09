@@ -7,6 +7,9 @@ import { TbGridDots } from "react-icons/tb";
 import Avatar from 'react-avatar'
 
 const Navbar = () => {
+
+    const user = false;
+
   return (
     <div className='flex items-center justify-between mx-3 h-16'>
         <div className='flex items-center gap-10'>
@@ -23,7 +26,9 @@ const Navbar = () => {
                 <h1 className='text-xl md:text-2xl text-gray-500 font-medium'>Gmail</h1>  
             </div>
         </div>
-        <div className='w-[50%]'>
+        { user && (
+            <>
+                <div className='w-[50%]'>
             <div className='bg-[#EAF1FB] focus:bg-white focus:shadow-md transition-all duration-300 rounded-full px-4 py-2 flex items-center'>
             <IoIosSearch size={'24px'} className='text-gray-700 font-medium'/>
             <input
@@ -46,7 +51,9 @@ const Navbar = () => {
             <TbGridDots size={'24px'} className='text-gray-600'/>
             </div>
             <Avatar src='/gmail_logo.svg' size="40" round={true} />
-        </div>               
+        </div>
+            </>
+        )}               
     </div>
   )
 }
