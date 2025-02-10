@@ -13,6 +13,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    profilePhoto: {
+        type: String,
+        required: true,
+    }
 }, {timestamps});
 
 export const User = mongoose.model("User", userSchema);
