@@ -1,5 +1,6 @@
 import User from '../models/userModel.js'
 import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 
 export const register = async (req, res) => {
     try {
@@ -10,10 +11,13 @@ export const register = async (req, res) => {
 
         if(user) return res.status(401).json({messsage: "This email already exist"});
 
+        const profilePhoto = 'https://avatar.iran.liara.run/public/boy';
+
         await User.create({
             fullname,
             email,
-            password: await bcrypt.hash(password, 10)
+            password: await bcrypt.hash(password, 10),
+            profilePhoto
         });
 
         return res.status(200).json({
@@ -36,16 +40,14 @@ export const login = async (req, res) => {
         const isPasswordMatch = await bcrypt.compare(password, user.password)
         if(!isPasswordMatch) return res.status(402).json({message: 'Password is incorrect'})
 
-        await User.create({
-            fullname,
-            email,
-            password: await bcrypt.hash(password, 10)
-        });
-
-        return res.status(200).json({
-            message: "User created successfully",
-            success: true,
-        });
+        const tokenData = {
+            userId:user_.id
+        }
+        const token = await jwt.sign(tokenData, process.env.SECRET_KEY, {expiresIn: '1d'});
+        return res.status(200).cookie("token", token, {maxAge: 1*24*60*60*1000, httpOnly: true, sameSite: 'strict'}).json({
+            message: "User logged in successfully",
+            user
+        })
     } catch (error) {
         console.log(error)
     }
