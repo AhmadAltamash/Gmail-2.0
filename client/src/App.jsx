@@ -1,6 +1,7 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Body, Compose, Emails, Inbox, Login, Mail, Navbar, Sidebar, Signup } from './components'
+import { Toaster } from 'react-hot-toast'
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,7 @@ const App = () => {
       <div className='absolute w-[250px] sm:w-[400px] bottom-0 -right-36 sm:right-20 z-10'>
         <Compose/>
       </div>
+      <Toaster/>
     </div>
   )
 }
