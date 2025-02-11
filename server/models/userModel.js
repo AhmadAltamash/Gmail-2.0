@@ -1,4 +1,4 @@
-import mongoose, { Mongoose } from "mongoose";
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
     fullname: {
@@ -17,6 +17,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     }
-}, {timestamps});
+}, {timestamps: true});
 
 export const User = mongoose.model("User", userSchema);

@@ -13,6 +13,10 @@ const emailSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-}, {timestamps});
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    }
+}, {timestamps:true});
 
 export const Email = mongoose.model("Email", emailSchema);

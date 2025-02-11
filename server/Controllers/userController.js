@@ -1,11 +1,11 @@
-import User from '../models/userModel.js'
+import { User } from '../models/userModel.js'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
 export const register = async (req, res) => {
     try {
         const {fullname, email, password} = req.body;
-        if(fullname || email || password) return res.status(400).json({message: "All Field Are Required"});
+        if(!fullname || !email || !password) return res.status(400).json({message: "All Field Are Required"});
         
         const user = await User.findOne({email});
 
@@ -32,7 +32,7 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
     try {
         const {email, password} = req.body;
-        if(email || password) return res.status(400).json({message: "All Field Are Required"});
+        if(!email || !password) return res.status(400).json({message: "All Field Are Required"});
         
         const user = await User.findOne({email});
         if(!user) return res.status(401).json({messsage: "User Does Not Exist"});
@@ -41,13 +41,24 @@ export const login = async (req, res) => {
         if(!isPasswordMatch) return res.status(402).json({message: 'Password is incorrect'})
 
         const tokenData = {
-            userId:user_.id
+            userId: user._id
         }
         const token = await jwt.sign(tokenData, process.env.SECRET_KEY, {expiresIn: '1d'});
+        // console.log(token);
         return res.status(200).cookie("token", token, {maxAge: 1*24*60*60*1000, httpOnly: true, sameSite: 'strict'}).json({
             message: "User logged in successfully",
             user
         })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const logout = async (req, res) => {
+    try {
+        return res.status(200).cookie("token", "", {maxAge:0}).json({
+            message: "User logged out successfully",
+        }) 
     } catch (error) {
         console.log(error)
     }
