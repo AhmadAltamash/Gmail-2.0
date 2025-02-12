@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoIosSearch } from "react-icons/io";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { IoSettingsOutline } from "react-icons/io5";
 import { TbGridDots } from "react-icons/tb";
 import Avatar from 'react-avatar'
+import { useDispatch, useSelector } from 'react-redux';
 
 const Navbar = () => {
 
-    const user = false;
+    const { user, searchedText } = useSelector(store => store.app);
+    const [text, setText] = useState("");
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(setSearchedText)
+    }, [text])
 
   return (
     <div className='flex items-center justify-between mx-3 h-16'>
@@ -35,6 +42,9 @@ const Navbar = () => {
                 type='text'
                 placeholder='Search mail'
                 className=' bg-transparent border-none outline-none rounded-full w-full px-1'
+                value={text}
+                name='search'
+                onChange={(e) => setText(e.target.value)}
             />
             </div>
         </div>
@@ -50,7 +60,7 @@ const Navbar = () => {
             <div className='rounded-full p-2 hover:bg-gray-200 transition-all duration-300 cursor-pointer'>
             <TbGridDots size={'24px'} className='text-gray-600'/>
             </div>
-            <Avatar src='/gmail_logo.svg' size="40" round={true} />
+            <Avatar src={user.profilePhoto} size="40" round={true} />
         </div>
             </>
         )}               

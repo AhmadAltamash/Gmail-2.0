@@ -8,4 +8,4 @@ export const LOGOUT = `${HOST}/user/logout`;
 //Mails
 export const SEND_MAIL = `${HOST}/email/createEmail`;
 export const GET_ALL_MAILS = `${HOST}/email/getAllEmails`;
-export const DELETE_MAIL = `${HOST}/email/:id`;
+export const DELETE_MAIL = `${HOST}/email/email`;
