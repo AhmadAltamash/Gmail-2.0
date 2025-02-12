@@ -1,4 +1,4 @@
-export const HOST = 'http://localhost:8080/api/v1';
+export const HOST = 'https://gmail-2-0.onrender.com';
 
 //Users
 export const REGISTER = `${HOST}/user/register`;
