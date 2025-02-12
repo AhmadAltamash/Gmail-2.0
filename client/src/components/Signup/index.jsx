@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { REGISTER } from '../../API/api'
 import toast from 'react-hot-toast'
+import Navbar from '../Navbar'
 
 const Signup = () => {
 
@@ -38,7 +39,9 @@ const Signup = () => {
   }
 
   return (
-    <div className='flex items-center justify-center w-screen h-[90vh] shadow-md'>
+    <>
+      <Navbar/>
+      <div className='flex items-center justify-center w-screen h-[91vh] shadow-md'>
         <form action="" className='flex flex-col gap-3 bg-white p-4' onSubmit={handleSubmit}>
             <h1 className='text-center font-semibold text-xl text-gray-600 uppercase'>Signup</h1>
             <input placeholder='Full Name' type='text' className='border-gray py-1-400 rounded-md px-2 outline-none py-1 focus:outline-gray-300' onChange={handleChange} value={input.fullname} name='fullname'/>
@@ -48,6 +51,7 @@ const Signup = () => {
             <p>Already have an account? Please <Link to='/login' className='text-blue-400 underline'>Login</Link></p>
         </form>
     </div>
+    </>
   )
 }
 

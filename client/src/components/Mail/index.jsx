@@ -14,7 +14,6 @@ const Mail = () => {
 
   const navigate = useNavigate();
   const { selectedEmail } = useSelector(state => state.app)
-  // const params = useParams();
   const gotoInbox = () => {
     navigate('/')
   }

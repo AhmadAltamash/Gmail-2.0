@@ -27,5 +27,5 @@ const appSlice = createSlice({
         }
     }
 });
-export const {setOpen, setUser, setEmail, setSelectedEmail} = appSlice.actions;
+export const {setOpen, setUser, setEmail, setSelectedEmail, setSearchedText} = appSlice.actions;
 export default appSlice.reducer;

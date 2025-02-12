@@ -6,15 +6,35 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { TbGridDots } from "react-icons/tb";
 import Avatar from 'react-avatar'
 import { useDispatch, useSelector } from 'react-redux';
+import { setSearchedText, setUser } from '../../redux/appSlice';
+import toast from 'react-hot-toast';
+import axios from 'axios';
+import { LOGOUT } from '../../API/api';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 
     const { user, searchedText } = useSelector(store => store.app);
     const [text, setText] = useState("");
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try {
+            const res = await axios.get(LOGOUT);
+            if(res.status === 200) {
+                toast.success('Logged out successfully');
+                navigate('/login');
+                dispatch(setUser(null))
+            }
+        } catch (error) {
+            console.log(error)
+            toast.error("Error while logging Out")
+        }
+    }
 
     useEffect(() => {
-        dispatch(setSearchedText)
+        dispatch(setSearchedText(text))
     }, [text])
 
   return (
@@ -60,6 +80,7 @@ const Navbar = () => {
             <div className='rounded-full p-2 hover:bg-gray-200 transition-all duration-300 cursor-pointer'>
             <TbGridDots size={'24px'} className='text-gray-600'/>
             </div>
+            <span className='bg-red-500 px-2 rounded-md text-white transition ease-in hover:bg-red-600 cursor-pointer py-1' onClick={handleLogout}>Logout</span>
             <Avatar src={user.profilePhoto} size="40" round={true} />
         </div>
             </>

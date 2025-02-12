@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux'
 import axios from 'axios';
 import { setUser } from '../../redux/appSlice';
+import Navbar from '../Navbar';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -40,7 +41,9 @@ const Login = () => {
   }
 
   return (
-    <div className='flex items-center justify-center w-screen h-[90vh] shadow-md'>
+    <>
+      <Navbar/>
+      <div className='flex items-center justify-center w-screen h-[91vh] shadow-md'>
         <form action="" className='flex flex-col gap-3 bg-white p-4' onSubmit={handleSubmit}>
             <h1 className='text-center font-semibold text-xl text-gray-600 uppercase'>Login</h1>
             <input placeholder='Email' type='email' className='border-gray-400 rounded-md px-2 outline-none py-1 focus:outline-gray-300' onChange={handleChange} value={input.email} name='email'/>
@@ -49,6 +52,7 @@ const Login = () => {
             <p>Don't have an account? Create One <Link to='/signup' className='text-blue-400 underline'>Signup</Link></p>
         </form>
     </div>
+    </>
   )
 }
 
