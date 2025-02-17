@@ -45,10 +45,22 @@ export const login = async (req, res) => {
         }
         const token = jwt.sign(tokenData, process.env.SECRET_KEY, {expiresIn: '1d'});
         console.log(token);
-        return res.status(200).cookie("token", token, {maxAge: 1*24*60*60*1000, httpOnly: true, sameSite: 'strict'}).json({
+        // return res.status(200).cookie("token", token, {maxAge: 1*24*60*60*1000, httpOnly: true, sameSite: 'strict'}).json({
+        //     message: "User logged in successfully",
+        //     user
+        // })
+        return res.status(200)
+        .cookie("token", token, {
+            maxAge: 24 * 60 * 60 * 1000, // 1 day
+            httpOnly: true, // Prevents client-side access
+            sameSite: "Lax", // Allow cross-site cookies in some cases
+            secure: process.env.NODE_ENV === "production" // Only secure in production
+        })
+        .json({
             message: "User logged in successfully",
             user
-        })
+        });
+
     } catch (error) {
         console.log(error)
     }

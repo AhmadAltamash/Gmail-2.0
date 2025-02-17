@@ -14,7 +14,6 @@ const PORT = 8080;
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-app.use(cookieParser());
 
 const corsOptions= {
     origin: 'https://gmail-2-0-1.onrender.com',
@@ -22,6 +21,7 @@ const corsOptions= {
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }
 app.use(cors(corsOptions));
+app.use(cookieParser());
 
 app.get('/', (req, res) => {
     res.status(200).send("You are Welcome");

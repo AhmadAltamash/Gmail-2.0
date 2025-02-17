@@ -7,7 +7,7 @@ export const auth = async (req, res, next) => {
         if(!token) {
             return res.status(401).json({ msg: 'No token, authorization denied' });
         }
-        const decoded = await jwt.verify(token, process.env.SECRET_KEY);
+        const decoded = jwt.verify(token, process.env.SECRET_KEY);
         if(!decoded) {
             return res.status(401).json({ msg: 'Token is invalid' });
         }
