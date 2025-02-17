@@ -53,7 +53,7 @@ export const login = async (req, res) => {
         .cookie("token", token, {
             maxAge: 24 * 60 * 60 * 1000, // 1 day
             httpOnly: true, // Prevents client-side access
-            sameSite: "Lax", // Allow cross-site cookies in some cases
+            sameSite: "none", // Allow cross-site cookies in some cases
             secure: process.env.NODE_ENV === "production" // Only secure in production
         })
         .json({
