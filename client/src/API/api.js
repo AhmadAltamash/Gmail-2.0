@@ -1,10 +1,10 @@
-// export const HOST = 'https://gmail-2-0.onrender.com';
-import axios from "axios";
+export const HOST = 'https://gmail-2-0.onrender.com';
+// import axios from "axios";
 
-const HOST = axios.create({
-  baseURL: "https://gmail-2-0.onrender.com", // Change this to your backend URL
-  withCredentials: true, // Ensures cookies are sent with requests
-});
+// const HOST = axios.create({
+//   baseURL: "https://gmail-2-0.onrender.com", // Change this to your backend URL
+//   withCredentials: true, // Ensures cookies are sent with requests
+// });
 
 //Users
 export const REGISTER = `${HOST}/api/v1/user/register`;
