@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 const corsOptions= {
-    origin: 'https://gmail-2-0-mu.vercel.app',
+    origin: 'https://gmail-2-0-1.onrender.com',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }
