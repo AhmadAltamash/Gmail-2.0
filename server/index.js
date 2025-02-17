@@ -23,6 +23,10 @@ const corsOptions= {
 }
 app.use(cors(corsOptions));
 
+app.get('/', (req, res) => {
+    res.status(200).send("You are Welcome");
+})
+
 //routes
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/email", emailRouter);
